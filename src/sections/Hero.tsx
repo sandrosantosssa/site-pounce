@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { SITE } from '@/lib/utils';
+import { useT } from '@/i18n/LangContext';
 
 function VolumeOnIcon({ className }: { className?: string }) {
   return (
@@ -28,6 +29,7 @@ function ArrowRight({ className }: { className?: string }) {
 }
 
 export function Hero() {
+  const t = useT().hero;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
 
@@ -56,20 +58,19 @@ export function Hero() {
         <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7ce6a8]" />
-            Recicladora de Plásticos Pós-consumo
+            {t.badge}
           </span>
 
           <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-7xl">
-            Transformando{' '}
+            {t.titlePre}{' '}
             <span className="bg-gradient-to-r from-[#7ce6a8] via-[#28b76b] to-[#7ce6a8] bg-clip-text text-transparent animate-gradient">
-              resíduos
+              {t.titleHighlight}
             </span>{' '}
-            em valor.
+            {t.titlePost}
           </h1>
 
           <p className="mt-6 max-w-2xl font-serif text-lg italic leading-relaxed text-white/85 sm:text-xl">
-            Reciclagem mecânica de plásticos com rastreabilidade, desempenho técnico e
-            propósito ambiental — para empresas que querem fechar o ciclo do plástico.
+            {t.subtitle}
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
@@ -77,29 +78,23 @@ export function Hero() {
               href="#contato"
               className="inline-flex items-center gap-2 rounded-full bg-[#28b76b] px-7 py-3.5 text-sm font-semibold text-white shadow-soft-lg transition-all hover:-translate-y-0.5 hover:bg-[#1f9555]"
             >
-              Falar com o time
+              {t.ctaPrimary}
               <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#esg"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/10"
-            >
-              Nossa atuação ESG
             </a>
           </div>
 
           <div className="mt-12 grid max-w-xl grid-cols-3 gap-6 text-white">
             <div>
-              <div className="font-display text-3xl font-extrabold text-[#7ce6a8]">6 mil</div>
-              <div className="mt-1 text-xs uppercase tracking-wider text-white/70">ton/ano de capacidade</div>
+              <div className="font-display text-3xl font-extrabold text-[#7ce6a8]">{t.kpi1Value}</div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-white/70">{t.kpi1Label}</div>
             </div>
             <div>
-              <div className="font-display text-3xl font-extrabold text-[#7ce6a8]">+5M</div>
-              <div className="mt-1 text-xs uppercase tracking-wider text-white/70">embalagens/ano</div>
+              <div className="font-display text-3xl font-extrabold text-[#7ce6a8]">{t.kpi2Value}</div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-white/70">{t.kpi2Label}</div>
             </div>
             <div>
-              <div className="font-display text-3xl font-extrabold text-[#7ce6a8]">100%</div>
-              <div className="mt-1 text-xs uppercase tracking-wider text-white/70">rastreabilidade</div>
+              <div className="font-display text-3xl font-extrabold text-[#7ce6a8]">{t.kpi3Value}</div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-white/70">{t.kpi3Label}</div>
             </div>
           </div>
         </div>
@@ -109,10 +104,10 @@ export function Hero() {
         type="button"
         onClick={() => setMuted((m) => !m)}
         className="absolute bottom-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/35 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition-all hover:bg-black/55"
-        aria-label={muted ? 'Ativar som' : 'Desativar som'}
+        aria-label={muted ? t.soundAriaOn : t.soundAriaOff}
       >
         {muted ? <VolumeOffIcon className="h-4 w-4" /> : <VolumeOnIcon className="h-4 w-4" />}
-        {muted ? 'Som' : 'Mudo'}
+        {muted ? t.soundOn : t.soundOff}
       </button>
     </section>
   );

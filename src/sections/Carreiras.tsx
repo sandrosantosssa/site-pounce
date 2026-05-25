@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SITE } from '@/lib/utils';
+import { useT } from '@/i18n/LangContext';
 
 const MAX_FILE_MB = 5;
 const MAX_FILE_BYTES = MAX_FILE_MB * 1024 * 1024;
@@ -31,6 +32,7 @@ function CheckIcon({ className }: { className?: string }) {
 type Status = 'idle' | 'loading' | 'ok' | 'err';
 
 export function Carreiras() {
+  const t = useT().carreiras;
   const [status, setStatus] = useState<Status>('idle');
   const [msg, setMsg] = useState('');
   const [file, setFile] = useState<File | null>(null);
@@ -44,12 +46,12 @@ export function Carreiras() {
       return;
     }
     if (f.type !== 'application/pdf' && !/\.pdf$/i.test(f.name)) {
-      setFileError('Envie um arquivo PDF.');
+      setFileError(t.form.errPdf);
       setFile(null);
       return;
     }
     if (f.size > MAX_FILE_BYTES) {
-      setFileError(`O PDF não pode passar de ${MAX_FILE_MB}MB.`);
+      setFileError(t.form.errSize);
       setFile(null);
       return;
     }
@@ -59,24 +61,23 @@ export function Carreiras() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!file) {
-      setFileError('Anexe o seu currículo em PDF.');
+      setFileError(t.form.errMissing);
       return;
     }
     setStatus('loading');
     setMsg('');
     try {
       const fd = new FormData(e.currentTarget);
-      // Garantir que o arquivo selecionado vai como "cv"
       fd.set('cv', file, file.name);
       const r = await fetch('/api/jobs', { method: 'POST', body: fd });
       if (!r.ok) throw new Error('falha');
       setStatus('ok');
-      setMsg('Currículo enviado! O nosso RH retornará caso seu perfil seja compatível.');
+      setMsg(t.form.ok);
       (e.currentTarget as HTMLFormElement).reset();
       setFile(null);
     } catch {
       setStatus('err');
-      setMsg('Não conseguimos enviar agora. Tente novamente em instantes ou escreva para ' + SITE.rhEmail + '.');
+      setMsg(`${t.form.err} ${SITE.rhEmail}.`);
     }
   }
 
@@ -86,28 +87,17 @@ export function Carreiras() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <span className="inline-flex items-center gap-2 rounded-full bg-accent-light px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#1f9555]">
-              Carreiras
+              {t.badge}
             </span>
             <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-primary sm:text-4xl lg:text-5xl">
-              Trabalhe{' '}
-              <span className="text-[#28b76b]">conosco</span>
+              {t.titlePre}{' '}
+              <span className="text-[#28b76b]">{t.titleHighlight}</span>
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-foreground/75">
-              Queremos pessoas com propósito, técnica e responsabilidade — gente
-              que acredita que a indústria pode ser parte da solução.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-foreground/75">
-              Envie seu currículo no formulário ao lado. Vamos analisar e
-              entraremos em contato caso seu perfil esteja alinhado às nossas
-              vagas, presentes ou futuras.
-            </p>
+            <p className="mt-5 text-base leading-relaxed text-foreground/75">{t.p1}</p>
+            <p className="mt-4 text-base leading-relaxed text-foreground/75">{t.p2}</p>
 
             <ul className="mt-8 space-y-3">
-              {[
-                'Ambiente industrial com propósito ESG',
-                'Time enxuto, com voz e responsabilidade',
-                'Aprendizado contínuo em reciclagem mecânica',
-              ].map((it) => (
+              {t.bullets.map((it) => (
                 <li key={it} className="flex items-start gap-3 text-sm text-foreground/80">
                   <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#28b76b] text-white">
                     <CheckIcon className="h-3 w-3" />
@@ -119,7 +109,7 @@ export function Carreiras() {
 
             <div className="mt-8 rounded-2xl border border-border bg-white p-5 shadow-soft">
               <div className="text-xs font-semibold uppercase tracking-wider text-foreground/55">
-                Recursos Humanos
+                {t.rhLabel}
               </div>
               <a
                 href={`mailto:${SITE.rhEmail}`}
@@ -136,7 +126,7 @@ export function Carreiras() {
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="text-sm">
-                <span className="mb-1.5 block font-semibold text-foreground/80">Nome completo</span>
+                <span className="mb-1.5 block font-semibold text-foreground/80">{t.form.name}</span>
                 <input
                   required
                   name="name"
@@ -144,16 +134,16 @@ export function Carreiras() {
                 />
               </label>
               <label className="text-sm">
-                <span className="mb-1.5 block font-semibold text-foreground/80">Cargo desejado</span>
+                <span className="mb-1.5 block font-semibold text-foreground/80">{t.form.position}</span>
                 <input
                   required
                   name="position"
-                  placeholder="Ex.: Operador de extrusão"
+                  placeholder={t.form.positionPlaceholder}
                   className="w-full rounded-xl border border-border bg-surface px-4 py-3 outline-none ring-[#28b76b]/30 transition-all focus:border-[#28b76b] focus:bg-white focus:ring-4"
                 />
               </label>
               <label className="text-sm">
-                <span className="mb-1.5 block font-semibold text-foreground/80">E-mail</span>
+                <span className="mb-1.5 block font-semibold text-foreground/80">{t.form.email}</span>
                 <input
                   required
                   type="email"
@@ -162,17 +152,17 @@ export function Carreiras() {
                 />
               </label>
               <label className="text-sm">
-                <span className="mb-1.5 block font-semibold text-foreground/80">Telefone</span>
+                <span className="mb-1.5 block font-semibold text-foreground/80">{t.form.phone}</span>
                 <input
                   name="phone"
                   className="w-full rounded-xl border border-border bg-surface px-4 py-3 outline-none ring-[#28b76b]/30 transition-all focus:border-[#28b76b] focus:bg-white focus:ring-4"
                 />
               </label>
               <label className="text-sm sm:col-span-2">
-                <span className="mb-1.5 block font-semibold text-foreground/80">Cidade / UF</span>
+                <span className="mb-1.5 block font-semibold text-foreground/80">{t.form.city}</span>
                 <input
                   name="city"
-                  placeholder="Ex.: Curitiba/PR"
+                  placeholder={t.form.cityPlaceholder}
                   className="w-full rounded-xl border border-border bg-surface px-4 py-3 outline-none ring-[#28b76b]/30 transition-all focus:border-[#28b76b] focus:bg-white focus:ring-4"
                 />
               </label>
@@ -180,20 +170,19 @@ export function Carreiras() {
 
             <label className="mt-4 block text-sm">
               <span className="mb-1.5 block font-semibold text-foreground/80">
-                Mensagem <span className="font-normal text-foreground/50">(opcional)</span>
+                {t.form.messageLabel}{' '}
+                <span className="font-normal text-foreground/50">{t.form.messageOpt}</span>
               </span>
               <textarea
                 name="message"
                 rows={4}
-                placeholder="Conte um pouco sobre você, sua experiência e o que te motiva."
+                placeholder={t.form.messagePlaceholder}
                 className="w-full resize-none rounded-xl border border-border bg-surface px-4 py-3 outline-none ring-[#28b76b]/30 transition-all focus:border-[#28b76b] focus:bg-white focus:ring-4"
               />
             </label>
 
             <div className="mt-4">
-              <span className="mb-1.5 block text-sm font-semibold text-foreground/80">
-                Currículo (PDF, até {MAX_FILE_MB}MB)
-              </span>
+              <span className="mb-1.5 block text-sm font-semibold text-foreground/80">{t.form.cvLabel}</span>
               <label
                 className={
                   'group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed bg-surface px-5 py-8 text-center transition-all ' +
@@ -218,7 +207,7 @@ export function Carreiras() {
                     </span>
                     <div className="font-semibold text-primary">{file.name}</div>
                     <div className="text-xs text-foreground/60">
-                      {(file.size / 1024 / 1024).toFixed(2)} MB · clique para trocar
+                      {(file.size / 1024 / 1024).toFixed(2)} MB · {t.form.cvReplace}
                     </div>
                   </>
                 ) : (
@@ -226,18 +215,12 @@ export function Carreiras() {
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-light text-[#28b76b]">
                       <UploadIcon className="h-5 w-5" />
                     </span>
-                    <div className="font-semibold text-primary">
-                      Clique para anexar o seu currículo
-                    </div>
-                    <div className="text-xs text-foreground/60">
-                      Apenas PDF · máx. {MAX_FILE_MB}MB
-                    </div>
+                    <div className="font-semibold text-primary">{t.form.cvPick}</div>
+                    <div className="text-xs text-foreground/60">{t.form.cvHint}</div>
                   </>
                 )}
               </label>
-              {fileError && (
-                <p className="mt-2 text-sm text-red-600">{fileError}</p>
-              )}
+              {fileError && <p className="mt-2 text-sm text-red-600">{fileError}</p>}
             </div>
 
             <button
@@ -245,7 +228,7 @@ export function Carreiras() {
               disabled={status === 'loading'}
               className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#28b76b] px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-[#1f9555] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
             >
-              {status === 'loading' ? 'Enviando…' : 'Enviar candidatura'}
+              {status === 'loading' ? t.form.sending : t.form.submit}
             </button>
 
             {msg && (

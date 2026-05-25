@@ -6,7 +6,6 @@ import { Esg } from '@/sections/Esg';
 import { Produtos } from '@/sections/Produtos';
 import { Diferenciais } from '@/sections/Diferenciais';
 import { Timeline } from '@/sections/Timeline';
-import { Impacto } from '@/sections/Impacto';
 import { Noticias } from '@/sections/Noticias';
 import { MVV } from '@/sections/MVV';
 import { Carreiras } from '@/sections/Carreiras';
@@ -23,7 +22,6 @@ export default function SitePounce() {
         <Produtos />
         <Diferenciais />
         <Timeline />
-        <Impacto />
         <Noticias />
         <MVV />
         <Carreiras />
