@@ -97,9 +97,10 @@ export default function LaunchPage() {
           className="mt-5 max-w-xl font-serif text-base italic text-white/90 sm:text-lg"
           style={{ textShadow: '0 1px 18px rgb(0 0 0 / 0.55)' }}
         >
-          Reciclagem mecânica de plásticos pós-consumo, com rastreabilidade e
-          desempenho técnico — gerando impacto positivo para empresas, pessoas e
-          o planeta.
+          Soluções avançadas em reciclagem mecânica de plásticos. Unimos
+          rastreabilidade, alto desempenho técnico e compromisso ambiental
+          para sermos o parceiro ideal das empresas que buscam fechar o
+          ciclo do plástico.
         </p>
 
         {/* Cronômetro */}
