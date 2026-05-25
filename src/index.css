@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  /* Fontes oficiais da marca Pounce (do Guia de Marca v2) */
+  --font-sans: "Sora", system-ui, -apple-system, sans-serif;
+  --font-display: "Sora", "Inter", sans-serif;
+  --font-serif: "Lora", Georgia, serif;
+
+  /* Paleta oficial Pounce */
+  --color-background: #ffffff;
+  --color-surface: #f4f7f8;
+  --color-foreground: #14191a;
+  --color-muted: #5b6a6b;
+  --color-border: #e3e9e9;
+
+  --color-primary: #184d63;          /* Azul Petróleo Escuro (logo, títulos) */
+  --color-primary-dark: #0e3344;
+  --color-primary-light: #e5eef2;
+
+  --color-accent: #28b76b;            /* Verde Sustentável (ícones, destaques) */
+  --color-accent-dark: #1f9555;
+  --color-accent-light: #e3f7ec;
+
+  --color-ink: #0d0d55;               /* Azul Profundo (contraste/fundos) */
+  --color-ink-soft: #15155f;
+
+  --color-gray-blue: #a5b4b8;         /* Cinza Azulado (detalhes) */
+
+  --shadow-soft: 0 1px 2px rgb(13 13 85 / 0.05), 0 10px 30px -12px rgb(13 13 85 / 0.15);
+  --shadow-soft-lg: 0 2px 6px rgb(13 13 85 / 0.06), 0 24px 50px -18px rgb(13 13 85 / 0.22);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+  ::selection { background: var(--color-accent); color: #fff; }
+}
+
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
+@utility shadow-soft-lg { box-shadow: var(--shadow-soft-lg); }
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-serif { font-family: var(--font-serif); }
+  .grid-pattern-light {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .text-glow-green { text-shadow: 0 0 22px rgb(40 183 107 / 0.55); }
+  .animate-gradient {
+    background-size: 220% 220%;
+    animation: gradientShift 12s ease infinite;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
