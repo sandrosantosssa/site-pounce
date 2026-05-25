@@ -2,11 +2,14 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { Hero } from '@/sections/Hero';
 import { Sobre } from '@/sections/Sobre';
-import { Reciclagem } from '@/sections/Reciclagem';
+import { Esg } from '@/sections/Esg';
+import { Produtos } from '@/sections/Produtos';
+import { Diferenciais } from '@/sections/Diferenciais';
 import { Timeline } from '@/sections/Timeline';
 import { Impacto } from '@/sections/Impacto';
-import { Diferenciais } from '@/sections/Diferenciais';
+import { Noticias } from '@/sections/Noticias';
 import { MVV } from '@/sections/MVV';
+import { Carreiras } from '@/sections/Carreiras';
 import { Contato } from '@/sections/Contato';
 
 export default function SitePounce() {
@@ -16,11 +19,14 @@ export default function SitePounce() {
       <main>
         <Hero />
         <Sobre />
-        <Reciclagem />
+        <Esg />
+        <Produtos />
+        <Diferenciais />
         <Timeline />
         <Impacto />
-        <Diferenciais />
+        <Noticias />
         <MVV />
+        <Carreiras />
         <Contato />
       </main>
       <SiteFooter />

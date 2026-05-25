@@ -18,8 +18,11 @@ function WhatsIcon({ className }: { className?: string }) {
 const LINKS = [
   { label: 'Início', href: '#inicio' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Reciclagem', href: '#reciclagem' },
+  { label: 'ESG', href: '#esg' },
+  { label: 'Produtos', href: '#produtos' },
   { label: 'Impacto', href: '#impacto' },
+  { label: 'Notícias', href: '#noticias' },
+  { label: 'Carreiras', href: '#carreiras' },
   { label: 'Contato', href: '#contato' },
 ];
 

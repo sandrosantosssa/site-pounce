@@ -81,10 +81,10 @@ export function Hero() {
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="#reciclagem"
+              href="#esg"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/10"
             >
-              Como reciclamos
+              Nossa atuação ESG
             </a>
           </div>
 

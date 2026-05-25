@@ -31,25 +31,25 @@ const STEPS = [
   },
 ];
 
-export function Reciclagem() {
+export function Esg() {
   return (
-    <section id="reciclagem" className="relative overflow-hidden bg-white py-24 lg:py-32">
+    <section id="esg" className="relative overflow-hidden bg-white py-24 lg:py-32">
       <div className="absolute -top-32 right-0 -z-10 h-96 w-96 rounded-full bg-accent-light opacity-60 blur-3xl" />
       <div className="absolute -bottom-32 left-0 -z-10 h-96 w-96 rounded-full bg-primary-light opacity-50 blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary-light px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-            Reciclagem Mecânica
+            ESG · Reciclagem Mecânica
           </span>
           <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-primary sm:text-4xl lg:text-5xl">
             Do resíduo ao pellet:{' '}
             <span className="text-[#28b76b]">processo completo</span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/75 sm:text-lg">
-            Operação industrial estruturada em seis etapas, com tecnologia e
-            controle técnico para devolver à indústria um insumo confiável e
-            sustentável.
+            Nossa atuação ESG na prática: operação industrial estruturada em
+            seis etapas, com tecnologia e controle técnico para devolver à
+            indústria um insumo confiável e sustentável.
           </p>
         </div>
 

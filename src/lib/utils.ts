@@ -18,6 +18,7 @@ export const SITE = {
   whatsapp: '5541991096003',
   whatsappLabel: '(41) 99109-6003',
   email: 'comercial@pounce.com.br',
+  rhEmail: 'rh@pounce.com.br',
   website: 'www.pounce.com.br',
 
   // Vídeo de fundo da landing (tela cheia, loop, mudo)
