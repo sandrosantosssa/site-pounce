@@ -1,5 +1,5 @@
-import LaunchPage from '@/pages/LaunchPage';
+import { LaunchGate } from '@/components/LaunchGate';
 
 export default function App() {
-  return <LaunchPage />;
+  return <LaunchGate />;
 }
