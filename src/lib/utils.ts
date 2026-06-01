@@ -12,7 +12,8 @@ export const SITE = {
 
   // 👉 DATA DE LANÇAMENTO do site (UTC-3 = Brasil)
   // Formato ISO. Quando o relógio passar dessa data, o countdown encerra.
-  launchDate: '2026-05-30T10:00:00-03:00',
+  // (+5 dias para aguardar aprovação final do cliente)
+  launchDate: '2026-06-04T10:00:00-03:00',
 
   // Contato (do material da Pounce)
   whatsapp: '5541991096003',
