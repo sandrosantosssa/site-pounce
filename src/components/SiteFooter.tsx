@@ -8,6 +8,22 @@ function MailIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.23.8 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  );
+}
 
 export function SiteFooter() {
   const t = useT();
@@ -34,6 +50,30 @@ export function SiteFooter() {
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70">
               {t.footer.description}
             </p>
+
+            {/* Redes sociais */}
+            <div className="mt-6 flex items-center gap-3">
+              <a
+                href={SITE.instagram}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram da Pounce"
+                title="Siga a Pounce no Instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all hover:-translate-y-0.5 hover:border-[#7ce6a8]/40 hover:bg-white/10 hover:text-[#7ce6a8]"
+              >
+                <InstagramIcon className="h-4 w-4" />
+              </a>
+              <a
+                href={SITE.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn da Pounce"
+                title="Siga a Pounce no LinkedIn"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all hover:-translate-y-0.5 hover:border-[#7ce6a8]/40 hover:bg-white/10 hover:text-[#7ce6a8]"
+              >
+                <LinkedInIcon className="h-4 w-4" />
+              </a>
+            </div>
           </div>
 
           <div>

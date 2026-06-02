@@ -11,9 +11,10 @@ export const SITE = {
   slogan: 'Transformando resíduos em valor',
 
   // 👉 DATA DE LANÇAMENTO do site (UTC-3 = Brasil)
-  // Formato ISO. Quando o relógio passar dessa data, o countdown encerra.
-  // (+5 dias para aguardar aprovação final do cliente)
-  launchDate: '2026-06-04T10:00:00-03:00',
+  // Formato ISO. Quando o relógio passar dessa data, o countdown encerra
+  // e o site completo aparece automaticamente.
+  // ⏰ Programado: 03/06/2026 00:00 BRT (cliente aprovou)
+  launchDate: '2026-06-03T00:00:00-03:00',
 
   // Contato (do material da Pounce)
   whatsapp: '5541991096003',
@@ -21,6 +22,10 @@ export const SITE = {
   email: 'comercial@pounce.com.br',
   rhEmail: 'rh@pounce.com.br',
   website: 'www.pounce.com.br',
+
+  // Redes sociais
+  instagram: 'https://www.instagram.com/pouncebr',
+  linkedin: 'https://www.linkedin.com/company/pouncebr/posts/?feedView=all',
 
   // Vídeo de fundo da landing (tela cheia, loop, mudo)
   launchVideo: '/03_final_com_musica.mp4' as string,
