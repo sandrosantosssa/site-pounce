@@ -151,7 +151,7 @@ export const dict = {
       available: 'Disponível',
       cta: 'Solicitar ficha técnica',
       footnote:
-        '* Imagens, fotos de produto e fichas técnicas detalhadas em atualização. Solicite informações pelo formulário de contato.',
+        '* Cada produto é entregue com ficha técnica e laudo por lote. Para amostras e fichas detalhadas, fale com nosso time pelo formulário de contato.',
       items: [
         {
           sigla: 'PCR PE',
@@ -529,7 +529,7 @@ export const dict = {
       available: 'Available',
       cta: 'Request datasheet',
       footnote:
-        '* Images, product photos and detailed datasheets are being updated. Request information through the contact form.',
+        '* Every product ships with a technical datasheet and certificate of analysis per batch. For samples and detailed specs, reach out via the contact form.',
       items: [
         {
           sigla: 'PCR PE',
