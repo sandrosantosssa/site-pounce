@@ -1,5 +1,10 @@
-import LaunchPage from '@/pages/LaunchPage';
+import { LangProvider } from '@/i18n/LangContext';
+import { LaunchGate } from '@/components/LaunchGate';
 
 export default function App() {
-  return <LaunchPage />;
+  return (
+    <LangProvider>
+      <LaunchGate />
+    </LangProvider>
+  );
 }

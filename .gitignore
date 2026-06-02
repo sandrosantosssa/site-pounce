@@ -11,3 +11,6 @@ dist-ssr
 
 # Material de referência (não vai pro deploy)
 DADOS/
+
+# Artefatos gerados pelos scripts de demo (vídeo, screenshots, PDF)
+demo-video/
