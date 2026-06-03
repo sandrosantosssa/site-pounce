@@ -13,7 +13,7 @@ export type FotoProduto = {
 /** Chave = sigla do produto (deve bater com dictionary.ts → produtos.items[].sigla) */
 export const FOTOS_PRODUTOS: Record<string, FotoProduto[]> = {
   'PCR PE': [
-    { src: '/produtos/pcr3-pe.jpeg', legenda: 'Verde oliva — uniforme' },
+    { src: '/produtos/pcr3-pe.jpeg', legenda: 'Canela — uniforme' },
     { src: '/produtos/pcr2-pe.jpeg', legenda: 'Verde escuro' },
     { src: '/produtos/pcr-pe.jpeg',  legenda: 'Cinza esverdeado' },
     { src: '/produtos/pcr1-pe.jpeg', legenda: 'Preto grafite' },
